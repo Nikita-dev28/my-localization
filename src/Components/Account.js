@@ -3,14 +3,22 @@ import { CiMail } from "react-icons/ci";
 import { IoMdPerson,IoMdHome } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
+
+    const navigate = useNavigate()
     const [isVisible, setIsVisible] = useState(false);
     const [isVisibles, setIsVisibles] = useState(false);
+
+    const handleClick = () => {
+        navigate("/")
+      }
+
     return (
-        <form className="container">
-            <p className="text-center h1 fw-bold my-4">Sign up</p>
-            <div className="row">
+        <form className="container d-flex flex-column justify-content-center align-items-center vh-100">
+            <h3 className="text-center fw-bold my-4">Sign up</h3>
+            <div className="row mt-4">
                 <div className="col-md-6 mb-3">
                     <div className="input-group">
                         <input type="text" className="form-control p-2" placeholder="Your Name" />
@@ -76,7 +84,7 @@ const Account = () => {
                     </div>
                 </div>
                 <div className="col-12 d-flex justify-content-center">
-                    <button type="button" className="btn btn-primary btn-lg">Register</button>
+                    <button type="button" className="btn btn-primary btn-lg" onClick={handleClick}>Register</button>
                 </div>
             </div>
         </form>

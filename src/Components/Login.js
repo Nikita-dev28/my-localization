@@ -7,13 +7,21 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const navigate = useNavigate()
     const [isVisible, setIsVisible] = useState(false);
+ 
 
-    const handClick = () => 
-    {
+    const handClick = () => {
         navigate("/home")
     };
+
+    const handleModalOpen = () => {
+        console.log("o[pen")
+        navigate("/forget")
+        
+    }
+
+
     return (
-        <form className='d-flex flex-column justify-content-center align-items-center'>
+        <form className='d-flex flex-column justify-content-center align-items-center vh-100'>
             <h3 className='my-4'>Login to your Account</h3>
             <div className=" mb-4 px-3">
                 <label className="text-start py-2 w-100">Email ID</label>
@@ -26,24 +34,24 @@ const Login = () => {
             <div className=" mb-2 px-3">
                 <label className="text-start py-2 w-100">Password</label>
                 <div className="input-group">
-                <input
-                    type={isVisible ? "text" : "password"}
-                    className="form-control pr-5"
-                    placeholder="Enter Password"
-                />
-                <span
-                    className="position-absolute end-0 m-2"
-                    style={{ right: "10px", cursor: "pointer" }}
-                    onClick={() => setIsVisible(!isVisible)}
-                >
-                    {isVisible ? <FaRegEyeSlash /> : <FaRegEye />}
-                </span>
+                    <input
+                        type={isVisible ? "text" : "password"}
+                        className="form-control pr-5"
+                        placeholder="Enter Password"
+                    />
+                    <span
+                        className="position-absolute end-0 m-2"
+                        style={{ right: "10px", cursor: "pointer" }}
+                        onClick={() => setIsVisible(!isVisible)}
+                    >
+                        {isVisible ? <FaRegEyeSlash /> : <FaRegEye />}
+                    </span>
                 </div>
             </div>
 
-
             <div className="pb-3">
-                <a href="#!">Forgot password?</a>
+                <Link to="/forget " onClick={handleModalOpen}>Forgot password?</Link>
+
             </div>
 
             <button type="button" className="btn btn-primary form-outline mb-4 px-5" onClick={handClick}>Login</button>
@@ -51,6 +59,7 @@ const Login = () => {
             <div className="text-center">
                 <p>Don't have account <Link to="/account"> Create account</Link></p>
             </div>
+
         </form>
     )
 }
